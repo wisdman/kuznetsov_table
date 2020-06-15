@@ -18,9 +18,7 @@ body {
     transform-style: preserve-3d;
     
 }
-.kt--card:hover {
-    transform: rotateY(180deg);
-}
+
 .kt--image {
     
     -webkit-backface-visibility: hidden; /* Safari */
@@ -77,11 +75,21 @@ body {
     width: 290px;
     height: 400px;
 }
+
 .kt--card2 {
     top: 390px;
     left: 100px;
     width: 311px;
     height: 415px;
+}
+.kt--card-active {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 30;
+}
+.kt--card-active:hover {
+    transform: translateX(-50%) translateY(-50%) rotateY(180deg);
 }
 .kt--card3 {
     top: 408px;
