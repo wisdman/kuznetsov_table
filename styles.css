@@ -1,0 +1,232 @@
+body {
+    font-family: "DIN Pro";
+}
+
+.kt--container {
+    background-image: url("assets/Backround_green_leather 02.jpg");
+    background-size: 100%;
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+    perspective: 2000px;
+}
+.kt--card {
+    position: absolute;
+    box-shadow: 5px 5px 10px #00000029;
+    opacity: 1;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    
+}
+.kt--card:hover {
+    transform: rotateY(180deg);
+}
+.kt--image {
+    
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+.kt--image-front,
+.kt--image-back {
+    position: absolute;
+}
+.kt--image-back {
+    transform: rotateY(180deg);
+}
+.kt--img {
+    object-fit: cover;
+    width: 100%;
+}
+.kt--control {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.kt--control-zoom {
+    background-color: #000;
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+}
+.kt--control-zoom path,
+.kt--control-close path {
+    fill: #F1F9FF;
+}
+.kt--control-close {
+    background-color: #000;
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+}
+.kt--control-slide {
+    background-color: #fff;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+}
+.kt--control-slide path {
+    fill: #000;
+}
+.kt--card1 {
+    /* background: transparent url('img/2.1._H1100xW800px_72dpi.png') 0% 0% no-repeat padding-box; */
+    top: 619px;
+    left: 765px;
+    width: 290px;
+    height: 400px;
+}
+.kt--card2 {
+    top: 390px;
+    left: 100px;
+    width: 311px;
+    height: 415px;
+}
+.kt--card3 {
+    top: 408px;
+    left: 1255px;
+    width: 449px;
+    height: 609px;
+}
+.kt--card4 {
+}
+.kt--card5 {
+}
+.kt--card6 {
+}
+.kt--card7 {
+}
+.kt--card8 {
+}
+.kt--card9 {
+}
+.kt--card10 {
+}
+.kt--card11 {
+}
+.kt--intro-button {
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 20;
+    cursor: pointer;
+}
+.kt--intro-button svg {
+    width: 28px;
+    height: 28px;
+}
+.kt--intro-button--top {
+    top: 50px;
+    right: 50px;
+}
+.kt--intro-button--bottom {
+    bottom: 50px;
+    left: 50px;
+}
+.kt--fade {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+.kt--intro {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+.kt--text {
+    position: absolute;
+    top: 346px;
+    left: 100px;
+    width: 850px;
+    height: 564px;
+    text-align: left;
+    font: 34px/42px "DIN Pro";
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.kt--splash-images img {
+    object-fit: cover;
+    width: 100%;
+}
+.kt--splash-image1 {
+    top: 355px;
+    left: 1115px;
+    width: 343px;
+    height: 476px;
+    position: absolute;
+}
+.kt--splash-image2 {
+    top: 355px;
+    left: 1477px;
+    width: 343px;
+    height: 476px;
+    position: absolute;
+}
+
+.kt--buttons {
+    bottom: 100px;
+    right: 100px;
+    position: absolute;
+    width: 600px;
+    display: flex;
+    justify-content: flex-end;
+}
+.kt--button {
+    border: 2px solid #FFFFFF;
+    border-radius: 35px;
+    opacity: 1;
+    background-color: transparent;
+    width: 270px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+
+    text-align: center;
+    font: 24px/48px "DIN Pro";
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    opacity: 1;
+    margin-left: 20px;
+}
+.kt--h1 {
+    top: 100px;
+    left: 100px;
+    width: 850px;
+    height: 68px;
+    font: 100px/100px "DIN Pro Cond";
+    font-weight: bold;
+    position: absolute;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.kt--h2 {
+    top: 193px;
+    left: 100px;
+    width: 850px;
+    height: 78px;
+    font: 100px/100px "DIN Pro Cond";
+    font-weight: bold;
+    position: absolute;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fff;
+    color: transparent;
+}
