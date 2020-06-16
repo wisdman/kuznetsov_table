@@ -7,16 +7,18 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="assets/fonts/stylesheet.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+    <link rel="preload" href="/assets/3.1.2._ H1584xW1100H_72dpi@2x.png">
 </head>
 <body>
     <div class="kt--container">
         <div class="kt--documents">
-            <div class="kt--intro-button kt--intro-button-open kt--intro-button--top"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
-            <div class="kt--intro-button kt--intro-button-open kt--intro-button--bottom"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
-            <div class="kt--card kt--card1">
+            <a class="kt--intro-button kt--button-open kt--intro-button--top" href="#kt--intro"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></a>
+            <a class="kt--intro-button kt--button-open kt--intro-button--bottom" href="#kt--intro"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></a>
+            <div class="kt--card kt--card1" id="card-1">
                 <div class="kt--image kt--image-front">
                     <img src="/assets/1.1_H1100xW800px_72dpi@2x.png" alt="" class="kt--img">
-                    <div class="kt--control kt--control-zoom"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
+                    <div class="kt--control kt--control-zoom" href="#card-1"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
                 </div>
                 <!-- <div class="kt--image kt--image-back">
                     <img src="/assets/1.2_H1100xW800px_72dpi@2x.png" alt="" class="kt--img">
@@ -24,10 +26,10 @@
                     <div class="kt--control kt--control-slide"><svg width="26" height="26"><path d="M2.115 11.5h24v3h-24z"/><path d="M1.737 10.724l9.899 9.899-2.122 2.121-9.898-9.899z"/><path d="M11.635 5.096l-9.899 9.899-2.121-2.122 9.899-9.899z"/></svg></div>
                 </div> -->
             </div>        
-            <div class="kt--card kt--card2">
+            <div class="kt--card kt--card2" id="card-2">
                 <div class="kt--image kt--image-front">
                     <img src="/assets/2.1._H1100xW800px_72dpi@2x.png" alt="" class="kt--img">
-                    <div class="kt--control kt--control-zoom"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
+                    <div class="kt--control kt--control-zoom" href="#card-2"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
                 </div>
                 <div class="kt--image kt--image-back">
                     <img src="/assets/2.2._H1100xW800px_72dpi@2x.png" alt="" class="kt--img">
@@ -35,26 +37,23 @@
                     <div class="kt--control kt--control-slide"><svg width="26" height="26"><path d="M2.115 11.5h24v3h-24z"/><path d="M1.737 10.724l9.899 9.899-2.122 2.121-9.898-9.899z"/><path d="M11.635 5.096l-9.899 9.899-2.121-2.122 9.899-9.899z"/></svg></div>
                 </div>
             </div>
-            <div class="kt--card kt--card3 kt--card-active">
-                <div class="kt--image kt--image-front">
-                    <img src="/assets/3.1.1._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
-                </div>
-                <div class="kt--image kt--image-back">
-                    <img src="/assets/3.1.2._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
-                    <div class="kt--control kt--control-close"><svg width="24" height="24"><path d="M4.575 2.454l16.97 16.97-2.12 2.122-16.97-16.97z"/><path d="M19.425 2.454l2.12 2.121-16.97 16.97-2.12-2.12z"/></svg></div>
-                </div>
-                <div class="kt--image-controls">
-                    <div class="kt--control kt--control-zoom"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
-                    <div class="kt--control kt--control-zoom-close"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
-                    <div class="kt--control kt--control-slide kt--control-slide--forward"><svg width="26" height="26"><path d="M2.115 11.5h24v3h-24z"/><path d="M1.737 10.724l9.899 9.899-2.122 2.121-9.898-9.899z"/><path d="M11.635 5.096l-9.899 9.899-2.121-2.122 9.899-9.899z"/></svg></div>
-                    <div class="kt--control kt--control-slide kt--control-slide--backward"><svg width="26" height="26"><path d="M2.115 11.5h24v3h-24z"/><path d="M1.737 10.724l9.899 9.899-2.122 2.121-9.898-9.899z"/><path d="M11.635 5.096l-9.899 9.899-2.121-2.122 9.899-9.899z"/></svg></div>
-
+            <div class="kt--card kt--card3" id="card-3">
+                <div class="kt--document">
+                    <div class="kt--image kt--image-front">
+                        <img src="/assets/3.1.1._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
+                        <a class="kt--control kt--control-zoom" href="#card-3"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></a>
+                        <a class="kt--control kt--control-slide" href="#card-3"><svg width="26" height="26"><path d="M2.115 11.5h24v3h-24z"/><path d="M1.737 10.724l9.899 9.899-2.122 2.121-9.898-9.899z"/><path d="M11.635 5.096l-9.899 9.899-2.121-2.122 9.899-9.899z"/></svg></a>
+                    </div>
+                    <div class="kt--image kt--image-back">
+                        <img src="/assets/3.1.2._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
+                        <a class="kt--control kt--control-slide kt--control-slide--backward" href="#card-3"><svg width="26" height="26"><path d="M2.115 11.5h24v3h-24z"/><path d="M1.737 10.724l9.899 9.899-2.122 2.121-9.898-9.899z"/><path d="M11.635 5.096l-9.899 9.899-2.121-2.122 9.899-9.899z"/></svg></a>                  
+                    </div>
                 </div>
             </div>
-            <div class="kt--card kt--card4">
+            <div class="kt--card kt--card4" id="card-4">
                 <div class="kt--image kt--image-front">
                     <img src="/assets/3.1.1._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
-                    <div class="kt--control kt--control-zoom"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
+                    <div class="kt--control kt--control-zoom" href="#card-4"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
                 </div>
                 <div class="kt--image kt--image-back">
                     <img src="/assets/3.1.2._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
@@ -62,10 +61,10 @@
                     <div class="kt--control kt--control-slide"><svg width="26" height="26"><path d="M2.115 11.5h24v3h-24z"/><path d="M1.737 10.724l9.899 9.899-2.122 2.121-9.898-9.899z"/><path d="M11.635 5.096l-9.899 9.899-2.121-2.122 9.899-9.899z"/></svg></div>
                 </div>
             </div>
-            <div class="kt--card kt--card5">
+            <div class="kt--card kt--card5" id="card-5">
                 <div class="kt--image kt--image-front">
                     <img src="/assets/3.2.1._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
-                    <div class="kt--control kt--control-zoom"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
+                    <div class="kt--control kt--control-zoom" href="#card-5"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
                 </div>
                 <div class="kt--image kt--image-back">
                     <img src="/assets/3.2.2._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
@@ -73,10 +72,10 @@
                     <div class="kt--control kt--control-slide"><svg width="26" height="26"><path d="M2.115 11.5h24v3h-24z"/><path d="M1.737 10.724l9.899 9.899-2.122 2.121-9.898-9.899z"/><path d="M11.635 5.096l-9.899 9.899-2.121-2.122 9.899-9.899z"/></svg></div>
                 </div>
             </div>
-            <div class="kt--card kt--card6">
+            <div class="kt--card kt--card6" id="card-6">
                 <div class="kt--image kt--image-front">
                     <img src="/assets/4.1._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
-                    <div class="kt--control kt--control-zoom"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
+                    <div class="kt--control kt--control-zoom" href="#card-6"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
                 </div>
                 <div class="kt--image kt--image-back">
                     <img src="/assets/4.2._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
@@ -84,10 +83,10 @@
                     <div class="kt--control kt--control-slide"><svg width="26" height="26"><path d="M2.115 11.5h24v3h-24z"/><path d="M1.737 10.724l9.899 9.899-2.122 2.121-9.898-9.899z"/><path d="M11.635 5.096l-9.899 9.899-2.121-2.122 9.899-9.899z"/></svg></div>
                 </div>
             </div>
-            <div class="kt--card kt--card7">
+            <div class="kt--card kt--card7" id="card-7">
                 <div class="kt--image kt--image-front">
                     <img src="/assets/7.1._ H1100xW1584_72dpi@2x.png" alt="" class="kt--img">
-                    <div class="kt--control kt--control-zoom"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
+                    <div class="kt--control kt--control-zoom" href="#card-7"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
                 </div>
                 <div class="kt--image kt--image-back">
                     <img src="/assets/7.2._ H1100xW1584_72dpi@2x.png" alt="" class="kt--img">
@@ -95,10 +94,10 @@
                     <div class="kt--control kt--control-slide"><svg width="26" height="26"><path d="M2.115 11.5h24v3h-24z"/><path d="M1.737 10.724l9.899 9.899-2.122 2.121-9.898-9.899z"/><path d="M11.635 5.096l-9.899 9.899-2.121-2.122 9.899-9.899z"/></svg></div>
                 </div>
             </div>
-            <div class="kt--card kt--card8">
+            <div class="kt--card kt--card8" id="card-8">
                 <div class="kt--image kt--image-front">
                     <img src="/assets/9.1._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
-                    <div class="kt--control kt--control-zoom"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
+                    <div class="kt--control kt--control-zoom" href="#card-8"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
                 </div>
                 <div class="kt--image kt--image-back">
                     <img src="/assets/9.2._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
@@ -106,10 +105,10 @@
                     <div class="kt--control kt--control-slide"><svg width="26" height="26"><path d="M2.115 11.5h24v3h-24z"/><path d="M1.737 10.724l9.899 9.899-2.122 2.121-9.898-9.899z"/><path d="M11.635 5.096l-9.899 9.899-2.121-2.122 9.899-9.899z"/></svg></div>
                 </div>
             </div>
-            <div class="kt--card kt--card9">
+            <div class="kt--card kt--card9" id="card-9">
                 <div class="kt--image kt--image-front">
                     <img src="/assets/9.1._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
-                    <div class="kt--control kt--control-zoom"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
+                    <div class="kt--control kt--control-zoom" href="#card-9"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
                 </div>
                 <div class="kt--image kt--image-back">
                     <img src="/assets/9.2._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
@@ -117,10 +116,10 @@
                     <div class="kt--control kt--control-slide"><svg width="26" height="26"><path d="M2.115 11.5h24v3h-24z"/><path d="M1.737 10.724l9.899 9.899-2.122 2.121-9.898-9.899z"/><path d="M11.635 5.096l-9.899 9.899-2.121-2.122 9.899-9.899z"/></svg></div>
                 </div>
             </div>
-            <div class="kt--card kt--card10">
+            <div class="kt--card kt--card10" id="card-10">
                 <div class="kt--image kt--image-front">
                     <img src="/assets/9.1._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
-                    <div class="kt--control kt--control-zoom"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
+                    <div class="kt--control kt--control-zoom" href="#card-10"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
                 </div>
                 <div class="kt--image kt--image-back">
                     <img src="/assets/9.2._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
@@ -128,10 +127,10 @@
                     <div class="kt--control kt--control-slide"><svg width="26" height="26"><path d="M2.115 11.5h24v3h-24z"/><path d="M1.737 10.724l9.899 9.899-2.122 2.121-9.898-9.899z"/><path d="M11.635 5.096l-9.899 9.899-2.121-2.122 9.899-9.899z"/></svg></div>
                 </div>
             </div>
-            <div class="kt--card kt--card11">
+            <div class="kt--card kt--card11" id="card-11">
                 <div class="kt--image kt--image-front">
                     <img src="/assets/9.1._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
-                    <div class="kt--control kt--control-zoom"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
+                    <div class="kt--control kt--control-zoom" href="#card-11"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M0 10.5h24v3H0z"/><path d="M10.5 0h3v24h-3z"/></svg></div>
                 </div>
                 <div class="kt--image kt--image-back">
                     <img src="/assets/9.2._ H1584xW1100H_72dpi@2x.png" alt="" class="kt--img">
@@ -172,11 +171,11 @@
                 <div class="kt--control"></div>
             </div> -->
         </div>
-        <div class="kt--intro" style="display: none;">
-            <div class="kt--intro-button kt--intro-button-close kt--intro-button--top"><svg width="24" height="24"><path d="M4.575 2.454l16.97 16.97-2.12 2.122-16.97-16.97z"/><path d="M19.425 2.454l2.12 2.121-16.97 16.97-2.12-2.12z"/></svg></div>
-            <div class="kt--intro-button kt--intro-button-close kt--intro-button--bottom"><svg width="24" height="24"><path d="M4.575 2.454l16.97 16.97-2.12 2.122-16.97-16.97z"/><path d="M19.425 2.454l2.12 2.121-16.97 16.97-2.12-2.12z"/></svg></div>
+        <div class="kt--intro active toggable" id="kt--intro">
+            <a class="kt--intro-button kt--button-close kt--intro-button--top"><svg width="24" height="24"><path d="M4.575 2.454l16.97 16.97-2.12 2.122-16.97-16.97z"/><path d="M19.425 2.454l2.12 2.121-16.97 16.97-2.12-2.12z"/></svg></a>
+            <a class="kt--intro-button kt--button-close kt--intro-button--bottom"><svg width="24" height="24"><path d="M4.575 2.454l16.97 16.97-2.12 2.122-16.97-16.97z"/><path d="M19.425 2.454l2.12 2.121-16.97 16.97-2.12-2.12z"/></svg></a>
             
-            <div class="kt--splash-first">
+            <div class="kt--splash-first active toggable" id="kt--intro-1">
                 <h1 class="kt--h1">НИКОЛАЙ КУЗНЕЦОВ</h1>
                 <h2 class="kt--h2">ГЕРОИ НЕ УМИРАЮТ</h2>
 
@@ -195,21 +194,21 @@
                 </div>
 
                 <div class="kt--buttons">
-                    <button class="kt--button">Биография</button>
-                    <button class="kt--button">Изучить</button>
+                    <a class="kt--button kt--button-nav kt--button-open" href="#kt--intro-2">Биография</a>
+                    <a class="kt--button kt--button-close">Изучить</a>
                 </div>
             </div>
-            <div class="kt--splash-second">
+            <div class="kt--splash-second toggable" id="kt--intro-2">
                 <h1 class="kt--h1">БИОГРАФИЯ</h1>
                 <div class="kt--text">
                     Будущий разведчик Н.Кузнецов родился в небольшой деревне Зырянка в границах современной Свердловской области. В 13 лет он покинул дом и отправился на поиск знаний и себя самого. Через Талицу, Кудымкар, Свердловск и Москву он попал во вражеское гнездо в оккупированном немцами Ровно, где раскрылся как прекрасный разведчик и народный мститель. Однако, к сожалению, судьба не всегда была к нему благосклонна.
                 </div>
                 <div class="kt--buttons">
-                    <button class="kt--button">Назад</button>
+                    <a class="kt--button kt--button-nav kt--button-open" href="#kt--intro-1">Назад</a>
                 </div>
             </div>
         </div>
-        <div class="kt--fade"></div>
+        <div class="kt--fade active" id="kt--fade"></div>
     </div>
 </body>
 </html>
