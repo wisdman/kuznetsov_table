@@ -76,6 +76,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
             draggableElem.classList.add("on-top");
         } );
+
+        draggie.on( 'dragStart', ( event, pointer ) => {
+            draggableElem.classList.add("kt-dragging");
+        });
+
+        draggie.on( 'dragEnd', ( event, pointer ) => {
+            window.requestAnimationFrame(() => {
+                draggableElem.classList.remove("kt-dragging");
+            })
+        });
+
         draggies.push( draggie );
     }
 });
