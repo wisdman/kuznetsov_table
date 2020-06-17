@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
+
     let fade = document.querySelector("#kt--fade");
 
     let allZooms = document.querySelectorAll(".kt--control-zoom");
@@ -34,15 +35,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let allButtons = document.querySelectorAll(".kt--button-open");
     allButtons.forEach(btn => {
         btn.addEventListener("click", (event) => {
-            event.preventDefault();
-            document.querySelectorAll(".toggable:not(.kt--intro)").forEach(card => {
-                card.classList.remove("active");
-            });
+            event.preventDefault();let draggie = new Draggabilly('.kt--card');
             let openCard = document.querySelector(btn.getAttribute("href"));
             openCard.classList.toggle("active");
             fade.classList.add("active");
             if(btn.getAttribute("href") == "#kt--intro") {
                 document.querySelector("#kt--intro-1").classList.add("active");
+            }
+            if(btn.getAttribute("href") == "#kt--intro-2") {
+                document.querySelector("#kt--intro-1").classList.remove("active");
+            }
+            if(btn.getAttribute("href") == "#kt--intro-1") {
+                document.querySelector("#kt--intro-2").classList.remove("active");
             }
         });
     });
@@ -57,4 +61,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
     });
     
+    let draggableElems = document.querySelectorAll('.kt--card');
+    // array of Draggabillies
+    let draggies = []
+    // init Draggabillies
+    for ( let i=0; i < draggableElems.length; i++ ) {
+        let draggableElem = draggableElems[i];
+        let draggie = new Draggabilly( draggableElem, {
+            containment: '.kt--container'
+        });
+        draggie.on( 'pointerDown', ( event, pointer ) => {
+            for ( let j=0; j < draggableElems.length; j++ ) {
+                draggableElems[j].classList.remove("on-top");
+            }
+            draggableElem.classList.add("on-top");
+        } );
+        draggies.push( draggie );
+    }
 });
