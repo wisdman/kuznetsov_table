@@ -33,14 +33,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
             fade.style.zIndex = zIndexCounter - 1;
             fade.classList.toggle("active");
             controls.classList.toggle("active");
+
+            if(openCard.classList.contains("kt--one-side")) {
+                controls.classList.add("one-side");
+            }
+            else {
+                controls.classList.remove("one-side");
+            }
         });
     });
 
     let flip = document.querySelector("#kt--control-slide");
     flip.addEventListener("click", (event) => {
         event.preventDefault();
-        openCard.classList.toggle("kt--flip");
-        flip.classList.toggle("kt--control-slide--backward");
+        if(!openCard.classList.contains("kt--one-side")) {
+            openCard.classList.toggle("kt--flip");
+            flip.classList.toggle("kt--control-slide--backward");
+        }
     });
 
     let close = document.querySelector("#kt--control-close");

@@ -491,3 +491,6 @@ a {
     display: flex;
     opacity: 1;
 }
+.kt--controls.one-side .kt--control-slide {
+    display: none;
+}
