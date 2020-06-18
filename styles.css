@@ -67,8 +67,8 @@ a {
     width: 100%;
 }
 .kt--control {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -76,6 +76,7 @@ a {
     outline: 0;
     -webkit-outline: 0;
     transition: all 1.2s;
+    cursor: pointer;
 }
 .kt--control:focus {
     outline: 0;
@@ -86,32 +87,36 @@ a {
     bottom: 25px;
     left: 25px;
 }
-.kt--control-zoom path,
-.kt--control-close path {
+.kt--control-zoom path {
     fill: #F1F9FF;
 }
 .kt--control-close {
-    background-color: #000;
+    background-color: #F1F9FF;
     position: absolute;
     bottom: 25px;
     left: 25px;
     transform: rotate(45deg);
 }
+.kt--control-close path {
+    fill: #000;
+}
+
 .kt--control-slide {
     background-color: #fff;
     position: absolute;
     bottom: 25px;
     right: 25px;
-    display: none;
+
     /* display: flex; */
     align-items: center;
     justify-content: center;
+    transform: rotate(-180deg);
 }
 .kt--control-slide path {
     fill: #000;
 }
 .kt--control-slide.kt--control-slide--backward {
-    transform: rotate(-180deg);
+    transform: rotate(0);
 }
 .kt--card1 {
     --top: 619px;
@@ -148,6 +153,9 @@ a {
 }
 .kt--card.kt--card-active .kt--document {
     transform: rotateZ(0deg);
+}
+.kt--card.kt--card-active .kt--control-zoom {
+    display: none;
 }
 /* .kt--card-active:hover {
     transform: translateX(-50%) translateY(-50%) rotateY(180deg);
@@ -459,4 +467,27 @@ a {
     100% {
       opacity:1;
   }
+}
+
+.kt--controls {
+    z-index: 2600;
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    width: calc(100vw - 200px);
+    display: none;
+    opacity: 0;
+    height: 70px;
+    margin-top: -35px;
+    justify-content: stretch;
+
+    animation: fadeIn ease 0.8s;
+    -webkit-animation: fadeIn ease 0.8s;
+    -moz-animation: fadeIn ease 0.8s;
+    -o-animation: fadeIn ease 0.8s;
+    -ms-animation: fadeIn ease 0.8s;
+}
+.kt--controls.active {
+    display: flex;
+    opacity: 1;
 }

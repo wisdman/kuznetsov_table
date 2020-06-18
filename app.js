@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     
     let fade = document.querySelector("#kt--fade");
+    let controls = document.querySelector("#kt--controls");
     let zIndexCounter = 10;
     // let hammertime = new Hammer(document.querySelectorAll(".kt--container")[0]);
     // hammertime.get('rotate').set({ enable: true });
@@ -9,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //     let rotatingCard = event.target.closest(".kt--document");
     //     rotatingCard.style.setProperty('--angle', event.angle + "deg");
     // });
+    let openCard;
 
     let allZooms = document.querySelectorAll(".kt--control-zoom");
     console.log(allZooms);
@@ -22,25 +24,32 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 console.log(card.classList);
                 card.classList.remove("kt--card-active");
             });
-            btn.classList.toggle("kt--control-close");
             
-            let openCard = document.querySelector(btn.getAttribute("href"));
+            openCard = document.querySelector(btn.getAttribute("href"));
+            console.log(openCard)
             openCard.classList.toggle("kt--card-active");
             zIndexCounter+=10
             openCard.style.zIndex = zIndexCounter;
             fade.style.zIndex = zIndexCounter - 1;
             fade.classList.toggle("active");
+            controls.classList.toggle("active");
         });
     });
 
-    let allFlips = document.querySelectorAll(".kt--control-slide");
-    allFlips.forEach(btn => {
-        btn.addEventListener("click", (event) => {
-            console.log("slide")
-            event.preventDefault();
-            let openCard = document.querySelector(btn.getAttribute("href"));
-            openCard.classList.toggle("kt--flip");
-        });
+    let flip = document.querySelector("#kt--control-slide");
+    flip.addEventListener("click", (event) => {
+        event.preventDefault();
+        openCard.classList.toggle("kt--flip");
+        flip.classList.toggle("kt--control-slide--backward");
+    });
+
+    let close = document.querySelector("#kt--control-close");
+    close.addEventListener("click", (event) => {
+        event.preventDefault();
+        openCard.classList.remove("kt--card-active");
+        fade.classList.remove("active");
+        controls.classList.remove("active");
+        openCard = undefined;
     });
 
     let allButtons = document.querySelectorAll(".kt--button-open");
