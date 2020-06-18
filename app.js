@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-
+    
     let fade = document.querySelector("#kt--fade");
+    let zIndexCounter = 10;
+    // let hammertime = new Hammer(document.querySelectorAll(".kt--container")[0]);
+    // hammertime.get('rotate').set({ enable: true });
+    // console.log(hammertime)
+    // hammertime.on("rotate", (event) => {
+    //     let rotatingCard = event.target.closest(".kt--document");
+    //     rotatingCard.style.setProperty('--angle', event.angle + "deg");
+    // });
 
     let allZooms = document.querySelectorAll(".kt--control-zoom");
     console.log(allZooms);
@@ -18,6 +26,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
             
             let openCard = document.querySelector(btn.getAttribute("href"));
             openCard.classList.toggle("kt--card-active");
+            zIndexCounter+=10
+            openCard.style.zIndex = zIndexCounter;
+            fade.style.zIndex = zIndexCounter - 1;
             fade.classList.toggle("active");
         });
     });
@@ -64,17 +75,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let draggableElems = document.querySelectorAll('.kt--card');
     // array of Draggabillies
     let draggies = []
+    let hammers = []
     // init Draggabillies
     for ( let i=0; i < draggableElems.length; i++ ) {
         let draggableElem = draggableElems[i];
         let draggie = new Draggabilly( draggableElem, {
             containment: '.kt--container'
         });
+        
         draggie.on( 'pointerDown', ( event, pointer ) => {
             for ( let j=0; j < draggableElems.length; j++ ) {
                 draggableElems[j].classList.remove("on-top");
             }
-            draggableElem.classList.add("on-top");
+            //draggableElem.classList.add("on-top");
+            zIndexCounter++;
+            window.requestAnimationFrame(() => {
+                draggableElem.style.zIndex = zIndexCounter;
+            });
         } );
 
         draggie.on( 'dragStart', ( event, pointer ) => {
@@ -82,11 +99,65 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
 
         draggie.on( 'dragEnd', ( event, pointer ) => {
-            window.requestAnimationFrame(() => {
-                draggableElem.classList.remove("kt-dragging");
-            })
+            delay(300).then(() => window.requestAnimationFrame(() => draggableElem.classList.remove("kt-dragging")));
         });
 
         draggies.push( draggie );
+
+        let hammertime = new Hammer(draggableElem);
+        hammertime.get('rotate').set({ enable: true, threshold: 5 });
+        console.log(hammertime)
+        hammertime.on("rotatestart", (event) => {
+            //lastRotation = currentRotation;
+            let rotatingCard = event.target.closest(".kt--document");
+
+            rotatingCard.style.setProperty('--last-rotation', parseInt(getComputedStyle(rotatingCard).getPropertyValue('--angle')));
+            rotatingCard.style.setProperty('--start-rotation', Math.round(event.rotation));
+        });
+        hammertime.on("rotatemove", (event) => {
+            let rotatingCard = event.target.closest(".kt--document");
+
+            let diff = parseInt(getComputedStyle(rotatingCard).getPropertyValue('--start-rotation')) - Math.round(event.rotation);
+            let lastRotation = parseInt(getComputedStyle(rotatingCard).getPropertyValue('--last-rotation'));
+            let currentRotation = lastRotation - diff;
+            rotatingCard.style.setProperty('--angle', currentRotation%360 + "deg");
+        })
+        hammertime.on("rotateend", (event) => {
+            let rotatingCard = event.target.closest(".kt--document");
+
+            rotatingCard.style.setProperty('--last-rotation', parseInt(getComputedStyle(rotatingCard).getPropertyValue('--angle')));
+        })
+        // hammertime.on("rotate", (event) => {
+        //     let rotatingCard = event.target.closest(".kt--document");
+        //     let rotatingCardParent = event.target.closest(".kt--card");
+        //     console.log(event);
+        //     if(rotatingCard) {
+        //         rotatingCard.style.setProperty('--angle', event.rotation + "deg");
+        //     }
+        // });
+        hammers.push( hammertime );
     }
+});
+
+function delay(ms) {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, ms);
+    });
+  }
+
+
+  var currentRotation = 0, lastRotation, startRotation;
+manager.on('rotatemove', function(e) {
+    // do something cool
+    var diff = startRotation - Math.round(e.rotation);
+  currentRotation = lastRotation - diff;
+    $.Velocity.hook($stage, 'rotateZ', currentRotation + 'deg');
+});
+manager.on('rotatestart', function(e) {
+  lastRotation = currentRotation;
+  startRotation = Math.round(e.rotation);
+});
+manager.on('rotateend', function(e) {
+    // cache the rotation
+    lastRotation = currentRotation;
 });
