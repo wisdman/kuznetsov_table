@@ -2,7 +2,10 @@ body {
     font-family: "DIN Pro";
     --content-width: 1920px;
     --content-height: 1080px;
-    --open-scale: 1.5625;
+    /* --content-width: 100vw;
+    --content-height: 100vh;
+    --open-scale: 1.5625; */
+    --open-scale: 1.4;
 } 
 
 a {
@@ -12,8 +15,10 @@ a {
 .kt--container {
     background-image: url("assets/Backround_green_leather 02.jpg");
     background-size: 100%;
-    width: 1920px;
-    height: 1080px;
+    /* width: 100vw;
+    height: 100vh; */
+    width: var(--content-width);
+    height: var(--content-height);
     position: relative;
     perspective: 2000px;
     overflow: hidden;
@@ -86,6 +91,8 @@ a {
     position: absolute;
     bottom: 25px;
     left: 25px;
+    width: 60px;
+    height: 60px;
 }
 .kt--control-zoom path {
     fill: #F1F9FF;
@@ -93,8 +100,9 @@ a {
 .kt--control-close {
     background-color: #F1F9FF;
     position: absolute;
-    bottom: 25px;
-    left: 25px;
+    bottom: 50px;
+    left: 50%;
+    margin-left: -35px;
     transform: rotate(45deg);
 }
 .kt--control-close path {
@@ -104,19 +112,30 @@ a {
 .kt--control-slide {
     background-color: #fff;
     position: absolute;
-    bottom: 25px;
-    right: 25px;
+    bottom: 50px;
+    left: 50%;
+    margin-left: -200px;
 
     /* display: flex; */
     align-items: center;
     justify-content: center;
-    transform: rotate(-180deg);
+    
 }
 .kt--control-slide path {
     fill: #000;
 }
 .kt--control-slide.kt--control-slide--backward {
-    transform: rotate(0);
+    transform: rotate(-180deg);
+    right: 50%;
+    margin-right: -200px;
+    left: auto;
+}
+.kt--control-slide.disabled {
+    background-color:transparent;
+    border: 1px solid #F1F9FF;
+}
+.kt--control-slide.disabled path {
+    fill: #F1F9FF;
 }
 .kt--card1 {
     --top: 619px;
@@ -144,7 +163,7 @@ a {
     height: calc(var(--height) * var(--open-scale));
     top: 50% !important;
     left: 50% !important;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-53%);
     /*transform: translateX(calc((1920px - var(--width) * var(--open-scale)) / 2)) translateY(calc((1080px - var(--height) * var(--open-scale)) / 2));*/
     z-index: 3000 !important;
 }
@@ -177,7 +196,7 @@ a {
 }
 .kt--card.kt--card-active.kt--flip {
     /* transform: translateX(calc((1920px - var(--width) * var(--open-scale)) / 2)) translateY(calc((1080px - var(--height) * var(--open-scale)) / 2)); */
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-53%);
 }
 .kt--card.kt--card-active.kt--flip .kt--document {
     transform: rotateY(180deg) rotateZ(0deg);
@@ -195,50 +214,56 @@ a {
     --width: 449px;
     --height: 609px;
 } */
-.kt--card5 {
+.kt--card4 {
     --top: 58px;
     --left: 194px;
     --width: 400px;
     --height: 576px;
     --angle: 10deg;
 }
-.kt--card6 {
+.kt--card5 {
     --top: 118px;
     --left: 1288px;
     --width: 400px;
     --height: 576px;
     --angle: 15deg;
 }
-.kt--card7 {
+.kt--card6 {
     --top: 561px;
     --left: 229px;
     --width: 576px;
     --height: 400px;
+    --angle: 1deg;
 }
-.kt--card8 {
+.kt--card7 {
     --top: 408px;
     --left: 716px;
     --width: 576px;
     --height: 400px;
     --angle: 20deg;
 }
-.kt--card9 {
+.kt--card8 {
+    --top: 61px;
+    --left: 651px;
+    --height: 400px;
+    --width: 576px;
+    --angle: -20deg;
 }
-.kt--card10 {
+.kt--card9 {
     --top: 281px;
     --left: 441px;
     --width: 400px;
     --height: 576px;
     --angle: -5deg;
 }
-.kt--card11 {
+.kt--card10 {
     --top: 561px;
     --left: 1421px;
     --width: 400px;
     --height: 290px;
     --angle: 10deg;
 }
-.kt--card12 {
+.kt--card11 {
     --top: 169px;
     --left: 1043px;
     --width: 400px;
@@ -263,6 +288,7 @@ a {
     position: absolute;
     z-index: 5;
     cursor: pointer;
+    transition: all 0.8s;
 }
 .kt--intro-button svg {
     /* width: 28px;
@@ -470,27 +496,54 @@ a {
 }
 
 .kt--controls {
-    z-index: 2600;
-    position: absolute;
-    top: 50%;
-    left: 100px;
-    width: calc(100vw - 200px);
+    
     display: none;
     opacity: 0;
-    height: 70px;
-    margin-top: -35px;
     justify-content: stretch;
-
+    z-index: 2600;
     animation: fadeIn ease 0.8s;
     -webkit-animation: fadeIn ease 0.8s;
     -moz-animation: fadeIn ease 0.8s;
     -o-animation: fadeIn ease 0.8s;
     -ms-animation: fadeIn ease 0.8s;
+    position: relative;
+    width: var(--content-width);
+    height: var(--content-height);
+    top: 0;
+    left: 0;
 }
+.kt--controls .kt--control {
+    
+}
+
 .kt--controls.active {
     display: flex;
     opacity: 1;
 }
 .kt--controls.one-side .kt--control-slide {
     display: none;
+}
+
+/* .kt--multi .kt--multi--slide  {
+    opacity: 0;
+}
+.kt--multi .kt--multi--slide.active  {
+    opacity: 1;
+    animation: fadeIn ease 0.8s;
+    -webkit-animation: fadeIn ease 0.8s;
+    -moz-animation: fadeIn ease 0.8s;
+    -o-animation: fadeIn ease 0.8s;
+    -ms-animation: fadeIn ease 0.8s;
+} */
+
+.kt--multi .kt--multi--slide:nth-child(2n) {
+    opacity: 0;
+}
+.kt--multi .kt--multi--slide:nth-child(2n).active {
+    opacity: 1;
+    animation: fadeIn ease 0.8s;
+    -webkit-animation: fadeIn ease 0.8s;
+    -moz-animation: fadeIn ease 0.8s;
+    -o-animation: fadeIn ease 0.8s;
+    -ms-animation: fadeIn ease 0.8s;
 }

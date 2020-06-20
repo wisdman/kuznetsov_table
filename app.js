@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     let fade = document.querySelector("#kt--fade");
     let controls = document.querySelector("#kt--controls");
+    let forward = document.querySelector("#kt--control-slide--forward");
+    let backward = document.querySelector("#kt--control-slide--backward");
+
     let zIndexCounter = 10;
     // let hammertime = new Hammer(document.querySelectorAll(".kt--container")[0]);
     // hammertime.get('rotate').set({ enable: true });
@@ -30,35 +33,75 @@ document.addEventListener("DOMContentLoaded", function(event) {
             openCard.classList.toggle("kt--card-active");
             zIndexCounter+=10
             openCard.style.zIndex = zIndexCounter;
-            fade.style.zIndex = zIndexCounter - 1;
+            fade.style.zIndex = zIndexCounter - 2;
             fade.classList.toggle("active");
             controls.classList.toggle("active");
 
-            if(openCard.classList.contains("kt--one-side")) {
-                controls.classList.add("one-side");
-            }
-            else {
-                controls.classList.remove("one-side");
-            }
+            const cardNum = btn.getAttribute("href").match(/(\d+)/)[0];
+            draggies[cardNum - 1].disable();
         });
     });
 
-    let flip = document.querySelector("#kt--control-slide");
-    flip.addEventListener("click", (event) => {
-        event.preventDefault();
-        if(!openCard.classList.contains("kt--one-side")) {
-            openCard.classList.toggle("kt--flip");
-            flip.classList.toggle("kt--control-slide--backward");
-        }
+    let flips = document.querySelectorAll(".kt--control-slide");
+    let activeSlide = 1;
+    flips.forEach(flip => {
+        flip.addEventListener("click", (event) => {
+            event.preventDefault();
+            if(!openCard.classList.contains("kt--one-side") && !flip.classList.contains("disabled") && !openCard.classList.contains("kt--multi")) {
+                openCard.classList.toggle("kt--flip");
+                flips.forEach(el => { el.classList.remove("disabled"); })
+                flip.classList.toggle("disabled");
+                //flip.classList.toggle("kt--control-slide--backward");
+            }
+            else if(openCard.classList.contains("kt--multi") && !flip.classList.contains("disabled")) {
+                //openCard.classList.add("kt--flip");
+                activeSlide = openCard.style.getPropertyValue('--active-slide');
+                if(!activeSlide) {
+                    activeSlide = 1;
+                    // forward.classList.remove("disabled");
+                    // backward.classList.add("disabled");
+                }
+                // if(flip.classList.contains("kt--control-slide--backward")) {
+                //     activeSlide--;
+                // }
+                // else 
+                activeSlide++;
+                if(activeSlide%2) {
+                    openCard.classList.toggle("kt--flip");
+                    forward.classList.toggle("disabled");
+                    backward.classList.toggle("disabled");
+                }
+                if(activeSlide > 4) {
+                    activeSlide = 1;
+ 
+                }
+                if(activeSlide < 0) {
+                    activeSlide = 4;
+                    openCard.classList.toggle("kt--flip");
+                }
+                openCard.style.setProperty('--active-slide', activeSlide);
+                document.querySelectorAll(".kt--multi--slide").forEach(slide => {
+                    slide.classList.remove("active");
+                });
+                console.log(activeSlide)
+                document.querySelector("#kt--multi--slide" + activeSlide).classList.add("active");
+            }
+        });    
     });
 
     let close = document.querySelector("#kt--control-close");
     close.addEventListener("click", (event) => {
         event.preventDefault();
+        const cardNum = openCard.getAttribute("id").match(/(\d+)/)[0];
+        draggies[cardNum - 1].enable();
+
         openCard.classList.remove("kt--card-active");
         fade.classList.remove("active");
         controls.classList.remove("active");
         openCard = undefined;
+        forward.classList.add("disabled");
+        backward.classList.remove("disabled");
+        fade.style.zIndex = "";
     });
 
     let allButtons = document.querySelectorAll(".kt--button-open");
