@@ -350,6 +350,7 @@ a {
 .kt--splash-images img {
     object-fit: cover;
     width: 100%;
+    border-radius: 3px;
 }
 .kt--splash-image1 {
     top: 355px;
@@ -357,6 +358,7 @@ a {
     width: 343px;
     height: 476px;
     position: absolute;
+    border-radius: 3px;
 }
 .kt--splash-image2 {
     top: 355px;

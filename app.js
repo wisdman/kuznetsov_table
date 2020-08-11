@@ -94,8 +94,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
         event.preventDefault();
         const cardNum = openCard.getAttribute("id").match(/(\d+)/)[0];
         draggies[cardNum - 1].enable();
-
         openCard.classList.remove("kt--card-active");
+        openCard.classList.remove("kt--flip");
         fade.classList.remove("active");
         controls.classList.remove("active");
         openCard = undefined;
@@ -128,6 +128,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         btn.addEventListener("click", (event) => {
             event.preventDefault();
             let openIntro = document.querySelector("#kt--intro");
+            document.querySelector("#kt--intro-2").classList.remove("active");
             openIntro.classList.remove("active");
             fade.classList.remove("active");
         });
@@ -200,25 +201,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 });
 
+let timer = new Date()
+
+window.addEventListener("pointerup", () => {
+    timer = new Date()
+}, { passive:true });
+
+(function loop() {
+    if((new Date() - timer) >= 1000*60*5) {
+        timer = new Date();
+        window.location.reload()
+    }
+    setTimeout(loop, 60000)
+})()
+
 function delay(ms) {
     return new Promise((resolve, reject) => {
       setTimeout(resolve, ms);
     });
   }
-
-
-  var currentRotation = 0, lastRotation, startRotation;
-manager.on('rotatemove', function(e) {
-    // do something cool
-    var diff = startRotation - Math.round(e.rotation);
-  currentRotation = lastRotation - diff;
-    $.Velocity.hook($stage, 'rotateZ', currentRotation + 'deg');
-});
-manager.on('rotatestart', function(e) {
-  lastRotation = currentRotation;
-  startRotation = Math.round(e.rotation);
-});
-manager.on('rotateend', function(e) {
-    // cache the rotation
-    lastRotation = currentRotation;
-});
