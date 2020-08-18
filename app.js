@@ -31,6 +31,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
             openCard = document.querySelector(btn.getAttribute("href"));
             console.log(openCard)
             openCard.classList.toggle("kt--card-active");
+            
+            openCard.classList.add("kt--flip-progress");
+            openCard.addEventListener("transitionend", (event) => {
+                if (event.propertyName == 'width') {
+                    event.target.classList.remove("kt--flip-progress");
+                }
+            }, false);
+
             zIndexCounter+=10
             openCard.style.zIndex = zIndexCounter;
             fade.style.zIndex = zIndexCounter - 2;
@@ -43,59 +51,86 @@ document.addEventListener("DOMContentLoaded", function(event) {
     });
 
     let flips = document.querySelectorAll(".kt--control-slide");
-    let activeSlide = 1;
+    //let activeSlide = 1;
     flips.forEach(flip => {
         flip.addEventListener("click", (event) => {
             event.preventDefault();
-            if(!openCard.classList.contains("kt--one-side") && !flip.classList.contains("disabled") && !openCard.classList.contains("kt--multi")) {
+            if(!flip.classList.contains("disabled")) {
                 openCard.classList.toggle("kt--flip");
+
                 flips.forEach(el => { el.classList.remove("disabled"); })
                 flip.classList.toggle("disabled");
                 //flip.classList.toggle("kt--control-slide--backward");
             }
-            else if(openCard.classList.contains("kt--multi") && !flip.classList.contains("disabled")) {
-                //openCard.classList.add("kt--flip");
-                activeSlide = openCard.style.getPropertyValue('--active-slide');
-                if(!activeSlide) {
-                    activeSlide = 1;
-                    // forward.classList.remove("disabled");
-                    // backward.classList.add("disabled");
-                }
-                // if(flip.classList.contains("kt--control-slide--backward")) {
-                //     activeSlide--;
-                // }
-                // else 
-                activeSlide++;
-                if(activeSlide%2) {
-                    openCard.classList.toggle("kt--flip");
-                    forward.classList.toggle("disabled");
-                    backward.classList.toggle("disabled");
-                }
-                if(activeSlide > 4) {
-                    activeSlide = 1;
- 
-                }
-                if(activeSlide < 0) {
-                    activeSlide = 4;
-                    openCard.classList.toggle("kt--flip");
-                }
-                openCard.style.setProperty('--active-slide', activeSlide);
-                document.querySelectorAll(".kt--multi--slide").forEach(slide => {
-                    slide.classList.remove("active");
-                });
-                console.log(activeSlide)
-                document.querySelector("#kt--multi--slide" + activeSlide).classList.add("active");
-            }
+            // else if(openCard.classList.contains("kt--multi") && !flip.classList.contains("disabled")) {
+            //     //openCard.classList.add("kt--flip");
+            //     activeSlide = openCard.style.getPropertyValue('--active-slide');
+            //     forward.classList.remove("disabled");
+            //     backward.classList.remove("disabled");
+            //     if(!activeSlide) {
+            //         activeSlide = 1;
+            //     }
+
+            //     let newSlide = activeSlide;
+            //     if(flip.classList.contains("kt--control-slide--backward")) {
+            //         newSlide++;
+            //     }
+            //     else newSlide--;
+
+            //     if(newSlide > 4) {
+            //         newSlide = 1;
+            //         openCard.classList.toggle("kt--flip");
+            //         forward.classList.add("disabled");
+            //     }
+            //     else if(newSlide < 1) {
+            //         newSlide = 3;
+            //         openCard.classList.toggle("kt--flip");
+            //         forward.classList.remove("disabled");
+            //         backward.classList.remove("disabled");
+            //     }
+            //     else if((newSlide == 3) && (activeSlide == 2)) {
+            //         openCard.classList.toggle("kt--flip");
+            //         forward.classList.remove("disabled");
+            //         backward.classList.remove("disabled");
+            //     }
+            //     else if((newSlide == 2) && (activeSlide == 3)) {
+            //         openCard.classList.toggle("kt--flip");
+            //         forward.classList.remove("disabled");
+            //         backward.classList.remove("disabled");
+            //     }
+            //     if(newSlide == 4) {
+            //         backward.classList.add("disabled");
+            //     }
+            //     activeSlide = newSlide;
+            //     openCard.style.setProperty('--active-slide', activeSlide);
+            //     openCard.addEventListener(
+            //         'webkitTransitionStart', 
+            //         function( event ) {
+            //             console.log('webkitTransitionStart');
+            //             document.querySelectorAll(".kt--multi--slide").forEach(slide => {
+            //                 slide.classList.remove("active");
+            //             });
+                        
+            //             document.querySelector("#kt--multi--slide" + activeSlide).classList.add("active");
+            //         }, false );
+            //     document.querySelectorAll(".kt--multi--slide").forEach(slide => {
+            //         slide.classList.remove("active");
+            //     });
+                
+            //     document.querySelector("#kt--multi--slide" + activeSlide).classList.add("active");
+            // }
         });    
     });
 
     let close = document.querySelector("#kt--control-close");
     close.addEventListener("click", (event) => {
         event.preventDefault();
+        openCard.classList.add("kt--flip-progress");
         const cardNum = openCard.getAttribute("id").match(/(\d+)/)[0];
         draggies[cardNum - 1].enable();
         openCard.classList.remove("kt--card-active");
         openCard.classList.remove("kt--flip");
+
         fade.classList.remove("active");
         controls.classList.remove("active");
         openCard = undefined;

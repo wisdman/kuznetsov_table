@@ -41,9 +41,7 @@ a {
     height: var(--height);
     top: var(--top);
     left: var(--left);
-    z-index: 1;
-    
-    
+    z-index: 1; 
 }
 .kt--card.kt-dragging,
 .kt--card.kt-dragging .kt--document {
@@ -166,7 +164,54 @@ a {
     transform: translateX(-50%) translateY(-53%);
     /*transform: translateX(calc((1920px - var(--width) * var(--open-scale)) / 2)) translateY(calc((1080px - var(--height) * var(--open-scale)) / 2));*/
     z-index: 3000 !important;
+    transition: all 0.8s;
 }
+/* .kt--card.kt--card-active.kt--multi:not(.kt--flip-progress) {
+    width: calc(var(--width) * var(--open-scale) * 2);
+} */
+.kt--card .kt--multi--slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transition: transform 0.8s;
+}
+.kt--card.kt--card-active .kt--multi--slide {
+    
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+.kt--card .kt--multi--slide1,
+.kt--card .kt--multi--slide3 {
+    z-index: 3;
+}
+.kt--card .kt--multi--slide2,
+.kt--card .kt--multi--slide4 {
+    z-index: 2;
+}
+.kt--card .kt--multi--slide2 {
+    transform-origin: left;
+    /* transform: translateX(100%) rotateY(180deg); */
+}
+.kt--card.kt--card-active .kt--multi--slide1,
+.kt--card.kt--card-active .kt--multi--slide3 {
+    transform: translateX(-51%);
+}
+.kt--card.kt--card-active .kt--multi--slide4,
+.kt--card.kt--card-active .kt--multi--slide2 {
+    transform: translateX(51%);
+    z-index: 2;
+}
+.kt--card.kt--card-active .kt--multi--slide2 {
+    /* transform: translateX(50%) rotateY(0); */
+}
+.kt--card.kt--multi .kt--control-zoom {
+    z-index: 5;
+}
+.kt--card.kt--flip-progress .kt--multi--slide1 {
+    box-shadow: 5px 5px 20px #00000050;
+}
+
 .kt--card.kt--card-active .kt--control-slide {
     display: flex;
 }
@@ -538,7 +583,7 @@ a {
     -ms-animation: fadeIn ease 0.8s;
 } */
 
-.kt--multi .kt--multi--slide:nth-child(2n) {
+/* .kt--multi .kt--multi--slide:nth-child(2n) {
     opacity: 0;
 }
 .kt--multi .kt--multi--slide:nth-child(2n).active {
@@ -548,4 +593,4 @@ a {
     -moz-animation: fadeIn ease 0.8s;
     -o-animation: fadeIn ease 0.8s;
     -ms-animation: fadeIn ease 0.8s;
-}
+} */
