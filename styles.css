@@ -6,6 +6,7 @@ body {
     --content-height: 100vh;
     --open-scale: 1.5625; */
     --open-scale: 1.4;
+    -webkit-tap-highlight-color: transparent;
 } 
 
 a {
